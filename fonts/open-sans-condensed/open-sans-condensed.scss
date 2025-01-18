@@ -1,0 +1,35 @@
+//    Font Weight guide:
+//    ------------------
+//    100 - thin
+//    200
+//    300 - light
+//    400 - regular / normal
+//    500 - medium
+//    600 - semi-bold
+//    700 - bold
+//    800
+//    900 - black / heavy
+
+// Font Face mixin
+@mixin fontFace($fontName, $fileName, $fontWeight, $fontStyle) {
+  @font-face {
+    font-family: "#{$fontName}";
+    src: url("#{$fileName}.woff2") format("woff2"),
+         url("#{$fileName}.woff") format("woff"),
+         url("#{$fileName}.ttf") format("truetype");
+    font-weight: #{$fontWeight};
+    font-style: #{$fontStyle};
+    font-display: swap;
+  }
+}
+
+// Regular
+@include fontFace("Open Sans Condensed", "opensans-cond-light", 400, "normal");
+// Regular Italic
+@include fontFace("Open Sans Condensed", "opensans-cond-lightitalic", 400, "italic");
+// Bold
+@include fontFace("Open Sans Condensed", "opensans-cond-bold", 700, "normal");
+// Bold Italic
+// This font doesn't have a bold italic version, so we use the bold version instead.
+@include fontFace("Open Sans Condensed", "opensans-cond-bold", 700, "italic");
+
